@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://taweshaldev.com.np/sitemap.xml
