@@ -1,3 +1,5 @@
+"use client";
+
 import { m, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
@@ -8,7 +10,7 @@ interface RevealProps {
   y?: number;
 }
 
-/** Scroll-reveal wrapper — fades + lifts content into view once. */
+/** Scroll-reveal wrapper. Fades and lifts content into view once. */
 export default function Reveal({ children, delay = 0, className, y = 24 }: RevealProps) {
   const reduced = useReducedMotion();
   return (

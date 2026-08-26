@@ -8,7 +8,7 @@ export default function Skills() {
       id="skills"
       kicker="04 · toolkit"
       title="Skills, honestly grouped"
-      intro="What I actually use — no wall of badges, no padding."
+      intro="What I actually use. No wall of badges, no padding."
     >
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {skillGroups.map((g, i) => (

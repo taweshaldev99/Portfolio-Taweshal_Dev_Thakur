@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { AnimatePresence, m } from "framer-motion";
 import { navLinks, person } from "../data/profile";
@@ -28,7 +30,7 @@ export default function Nav() {
       }`}
     >
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8" aria-label="Main">
-        <a href="#top" className="group flex items-center gap-2.5" aria-label="Taweshal Dev Thakur — home">
+        <a href="#top" className="group flex items-center gap-2.5" aria-label="Taweshal Dev Thakur, home">
           {/* TD monogram */}
           <span className="grid h-9 w-9 place-items-center rounded-lg border border-accent/40 bg-accent/10 font-display text-sm font-bold text-accent transition-colors group-hover:bg-accent/20">
             TD

@@ -9,7 +9,7 @@ export default function Contact() {
       id="contact"
       kicker="08 · contact"
       title="Let's build something reliable"
-      intro="Open to Python, data and QA opportunities — or a conversation about pipelines. I reply fast."
+      intro="Open to Python, data and QA opportunities, or just a conversation about pipelines. I reply fast."
     >
       <Reveal>
         <div className="relative overflow-hidden rounded-3xl border border-accent/20 bg-panel/70 p-8 sm:p-12">
@@ -75,7 +75,7 @@ export default function Contact() {
                 href={`mailto:${person.email}?subject=Hello%20Taweshal`}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-4 text-center text-sm font-bold text-ink transition-all hover:bg-accent-2 hover:shadow-[0_0_36px_rgb(56_189_248/0.45)]"
               >
-                Say hello — {person.email}
+                Say hello at {person.email}
               </a>
             </div>
           </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import { m, useReducedMotion } from "framer-motion";
 import { person, socials } from "../data/profile";
 import Pipeline from "../components/Pipeline";

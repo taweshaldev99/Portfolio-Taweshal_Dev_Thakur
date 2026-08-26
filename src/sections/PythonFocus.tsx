@@ -3,7 +3,7 @@ import Reveal from "../components/Reveal";
 import { pythonUses } from "../data/profile";
 
 const CODE_LINES: { text: string; cls: string }[] = [
-  { text: "# kathmandu bus stops — extract → transform → load", cls: "text-dim" },
+  { text: "# kathmandu bus stops: extract → transform → load", cls: "text-dim" },
   { text: 'stops = extract_osm("Kathmandu", feature="bus_stop")', cls: "text-fg/90" },
   { text: "", cls: "" },
   { text: "df = (pd.DataFrame(stops)", cls: "text-fg/90" },
@@ -20,7 +20,7 @@ export default function PythonFocus() {
     <Section
       id="python"
       kicker="05 · core tool"
-      title="Python — the tool I reach for first"
+      title="Python, the tool I reach for first"
       intro="Since 2025, Python has been how I automate, analyze and build. It's the language my data engineering path is built on."
     >
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">

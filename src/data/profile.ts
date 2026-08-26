@@ -12,7 +12,7 @@ export const person = {
   phoneHref: "+9779823348580",
   resumePath: "/Taweshal_Dev_Thakur_CV.pdf",
   tagline:
-    "I test software for a living and build data pipelines to grow — turning raw, messy data into structured, queryable systems with Python and SQL.",
+    "I test software for a living and build data pipelines to grow, turning raw, messy data into structured, queryable systems with Python and SQL.",
 } as const;
 
 export const socials = [
@@ -25,26 +25,26 @@ export const socials = [
 
 export const about = {
   paragraphs: [
-    "My first programs were C and C++ — contact management systems and data-structure drills in the first semesters of my BIT at Purbanchal University. That's where I learned that software either works or it doesn't, and the compiler doesn't care how you feel about it.",
-    "In 2025 I picked up Python, and it stuck. It became the tool I reach for to automate, analyze and build: data analysis training at KIST, a data engineering fellowship at DLytica, and my first real pipeline — pulling every bus stop in Kathmandu out of OpenStreetMap, cleaning it with Pandas, and loading it into a relational database.",
+    "My first programs were C and C++, contact management systems and data-structure drills in the first semesters of my BIT at Purbanchal University. That's where I learned that software either works or it doesn't, and the compiler doesn't care how you feel about it.",
+    "In 2025 I picked up Python, and it stuck. It became the tool I reach for to automate, analyze and build: data analysis training at KIST, a data engineering fellowship at DLytica, and my first real pipeline, pulling every bus stop in Kathmandu out of OpenStreetMap, cleaning it with Pandas, and loading it into a relational database.",
     "In March 2026 I joined Yoddha Lab as an intern and earned a full-time QA engineering role in 90 days, working on the Nepal HRMS platform. QA taught me something most beginners skip: correctness is a feature. Every release lives or dies on whether the data underneath it can be trusted.",
-    "That's exactly why data engineering pulls me in. I'm deliberately stacking the pieces — SQL and PostgreSQL, ETL patterns, Snowflake — because I want to be the person who builds the data systems other people can rely on.",
+    "That's exactly why data engineering pulls me in. I'm deliberately stacking the pieces: SQL and PostgreSQL, ETL patterns, Snowflake. I want to be the person who builds the data systems other people can rely on.",
   ],
   facts: [
     { label: "Based in", value: "Kathmandu, Nepal" },
     { label: "Current role", value: "Associate QA Engineer @ Yoddha Lab" },
-    { label: "Education", value: "BIT, Purbanchal University (2022 — expected 2026)" },
+    { label: "Education", value: "BIT, Purbanchal University (2022 to 2026 expected)" },
     { label: "Writing Python since", value: "2025" },
   ],
 } as const;
 
 export type JourneyStatus = "solid" | "building" | "next";
 export const journey: { title: string; status: JourneyStatus; note: string }[] = [
-  { title: "C / C++ foundations", status: "solid", note: "OOP, DSA, first projects (2022–2024)" },
-  { title: "Python", status: "solid", note: "Core language since 2025 — scripting, automation, data work" },
-  { title: "Data processing", status: "solid", note: "Pandas · NumPy · EDA — KIST training + real datasets" },
+  { title: "C / C++ foundations", status: "solid", note: "OOP, DSA and my first projects (2022 to 2024)" },
+  { title: "Python", status: "solid", note: "Core language since 2025: scripting, automation, data work" },
+  { title: "Data processing", status: "solid", note: "Pandas, NumPy and EDA across KIST training and real datasets" },
   { title: "SQL & PostgreSQL", status: "building", note: "Schema design, analytics queries, daily practice" },
-  { title: "ETL pipelines", status: "building", note: "First pipeline shipped — Kathmandu Bus Stops ETL" },
+  { title: "ETL pipelines", status: "building", note: "First pipeline shipped: Kathmandu Bus Stops ETL" },
   { title: "Snowflake & warehouses", status: "next", note: "Working through warehouse concepts and hands-on material" },
   { title: "Data Engineering", status: "next", note: "The destination: reliable, scalable data systems" },
 ];
@@ -53,7 +53,7 @@ export const experience = [
   {
     company: "Yoddha Lab Pvt. Ltd.",
     role: "Associate QA Engineer",
-    period: "Jul 2026 — Present",
+    period: "Jul 2026 to Present",
     location: "Kathmandu, Nepal",
     summary:
       "Promoted from intern to full-time after a 90-day program, recognized for contribution to the Nepal HRMS product.",
@@ -67,10 +67,10 @@ export const experience = [
   {
     company: "Yoddha Lab Pvt. Ltd.",
     role: "Associate Project Manager Intern → QA Intern",
-    period: "Mar 2026 — Jul 2026",
+    period: "Mar 2026 to Jul 2026",
     location: "Kathmandu, Nepal",
     summary:
-      "90-day internship program spanning project coordination and QA on the Nepal HRMS launch — ended with a full-time offer.",
+      "90-day internship program spanning project coordination and QA on the Nepal HRMS launch. It ended with a full-time offer.",
     points: [
       "Coordinated planning, tracking and execution across a cross-functional team of up to 10 spanning development, product and operations.",
       "Managed tasks, sprints and deliverables in Jira; contributed to sprint planning, daily standups and retrospectives, surfacing blockers early.",
@@ -108,17 +108,17 @@ export const skillGroups = [
 ] as const;
 
 export const learning = [
-  { title: "Snowflake", note: "Cloud data warehousing — hands-on learning material and practice" },
+  { title: "Snowflake", note: "Cloud data warehousing, working through material and hands-on practice" },
   { title: "Advanced SQL", note: "Window functions, optimization, analytics patterns on PostgreSQL" },
   { title: "ETL / ELT design", note: "Pipeline architecture, idempotency, scheduling concepts" },
-  { title: "Data modeling", note: "Normalized + dimensional schemas for real datasets" },
+  { title: "Data modeling", note: "Normalized and dimensional schemas for real datasets" },
 ] as const;
 
 export const pythonUses = [
   { title: "ETL & pipelines", desc: "Extract from APIs, transform with Pandas, load into SQL databases." },
   { title: "Data analysis", desc: "EDA with Pandas, NumPy and Matplotlib on real datasets." },
   { title: "Automation & scripting", desc: "Small tools that remove repetitive work." },
-  { title: "Problem solving", desc: "DSA practice — HackerRank badges in Python, SQL and Problem Solving." },
+  { title: "Problem solving", desc: "DSA practice, with HackerRank badges in Python, SQL and Problem Solving." },
 ] as const;
 
 export interface Project {
@@ -137,9 +137,9 @@ export const projects: Project[] = [
     name: "Kathmandu Bus Stops ETL",
     featured: true,
     problem:
-      "Kathmandu's public bus stop data exists only as scattered, inconsistent OpenStreetMap tags — no clean, queryable dataset for the city's transport network.",
+      "Kathmandu's public bus stop data exists only as scattered, inconsistent OpenStreetMap tags. There is no clean, queryable dataset for the city's transport network.",
     solution:
-      "A four-stage Python pipeline: extract every bus stop via the Overpass API, clean and normalize the raw records with Pandas (missing names, coordinate validation), load them into a relational schema through SQLAlchemy, and expose a query layer for analytics. Built for the DLytica fellowship; schema extends from SQLite to PostgreSQL.",
+      "A four-stage Python pipeline: extract every bus stop via the Overpass API, clean and normalize the raw records with Pandas (missing names, coordinate validation), load them into a relational schema through SQLAlchemy, and expose a query layer for analytics. Built for the DLytica fellowship; the schema extends from SQLite to PostgreSQL.",
     tech: ["Python", "Pandas", "Requests", "SQLAlchemy", "SQLite", "PostgreSQL", "OpenStreetMap"],
     learned:
       "Staged pipeline design, defensive data cleaning, and why a normalized schema beats a CSV the moment someone asks a second question.",
@@ -153,27 +153,27 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "AURUM — Men's Parlour Website",
-    problem: "A premium grooming studio needed a full web presence with online booking — not a brochure page.",
+    name: "AURUM Men's Parlour Website",
+    problem: "A premium grooming studio needed a full web presence with online booking, not a brochure page.",
     solution:
-      "Production-grade Next.js 15 site: 16 pages, a 5-step booking wizard with live availability, an admin console with revenue charts, and complete SEO (JSON-LD, sitemap, OG). Dark-luxury design system with Framer Motion + GSAP.",
+      "Production-grade Next.js 15 site: 16 pages, a 5-step booking wizard with live availability, an admin console with revenue charts, and complete SEO (JSON-LD, sitemap, OG). Dark-luxury design system with Framer Motion and GSAP.",
+    learned: "Full product lifecycle in one codebase: design system, data layer, admin tooling and deployment-ready SEO.",
     tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP"],
-    learned: "Full product lifecycle — design system, data layer, admin tooling and deployment-ready SEO in one codebase.",
     github: "https://github.com/taweshaldev99/Men-s_Parlour_Website",
   },
   {
     name: "Data Engineering @ DLytica",
     problem: "Learning data engineering from scattered tutorials doesn't stick.",
     solution:
-      "A working repository of every notebook, note and exercise from the DLytica Inc. data engineering program — my structured record of the concepts I'm building on.",
+      "A working repository of every notebook, note and exercise from the DLytica Inc. data engineering program. My structured record of the concepts I'm building on.",
     tech: ["Python", "Jupyter", "SQL", "Data Engineering"],
     github: "https://github.com/taweshaldev99/Data-Engineering-on-DLytica",
   },
   {
-    name: "Data Analysis — KIST",
+    name: "Data Analysis at KIST",
     problem: "Theory-only data analysis training fades fast.",
     solution:
-      "Hands-on EDA notebooks from the KIST Data Analysis with Python program — Pandas, NumPy and visualization applied to real datasets.",
+      "Hands-on EDA notebooks from the KIST Data Analysis with Python program, applying Pandas, NumPy and visualization to real datasets.",
     tech: ["Python", "Pandas", "NumPy", "Matplotlib", "Jupyter"],
     github: "https://github.com/taweshaldev99/Data_Analysis_by_KIST",
   },
@@ -181,7 +181,7 @@ export const projects: Project[] = [
     name: "Contact Management System",
     problem: "First-year proof that I could build something complete, start to finish.",
     solution:
-      "A file-based CRUD contact manager written in C/C++ — my first full project, and the reason I understand what higher-level languages are doing for me.",
+      "A file-based CRUD contact manager written in C/C++. My first full project, and the reason I understand what higher-level languages are doing for me.",
     tech: ["C", "C++", "File I/O", "Data Structures"],
     github: "https://github.com/taweshaldev99/Contact-Management-System",
   },
@@ -200,12 +200,12 @@ export const credentials = {
   ],
   achievements: [
     "Earned a full-time offer at the end of a 90-day internship, awarded on performance.",
-    "KIST Hackathon 2025 — delivered a working software solution with a team under a fixed time constraint.",
+    "At KIST Hackathon 2025, delivered a working software solution with a team under a fixed time constraint.",
   ],
   education: {
     degree: "Bachelor of Information Technology (BIT)",
     school: "Purbanchal University, Kathmandu",
-    period: "2022 — expected 2026",
+    period: "2022 to 2026 (expected)",
   },
 } as const;
 

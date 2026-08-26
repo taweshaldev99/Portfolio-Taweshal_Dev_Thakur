@@ -4,7 +4,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-/assets/*
+/_next/static/*
   Cache-Control: public, max-age=31536000, immutable
 
 /og.png
@@ -15,3 +15,4 @@
 
 /Taweshal_Dev_Thakur_CV.pdf
   Content-Disposition: attachment; filename="Taweshal_Dev_Thakur_CV.pdf"
+  Cache-Control: public, max-age=3600

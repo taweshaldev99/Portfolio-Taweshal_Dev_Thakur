@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, m } from "framer-motion";
 
@@ -13,13 +15,13 @@ const STAGES: Stage[] = [
     key: "source",
     label: "Source",
     mono: "api / files",
-    desc: "Raw, messy data — an API response, a CSV, OpenStreetMap tags. Nothing you'd trust yet.",
+    desc: "Raw, messy data. An API response, a CSV, OpenStreetMap tags. Nothing you'd trust yet.",
   },
   {
     key: "extract",
     label: "Extract",
     mono: "python",
-    desc: "Python pulls it in — requests, retries, raw records captured exactly as they arrive.",
+    desc: "Python pulls it in with requests and retries, capturing raw records exactly as they arrive.",
   },
   {
     key: "transform",
@@ -31,7 +33,7 @@ const STAGES: Stage[] = [
     key: "load",
     label: "Load",
     mono: "postgresql",
-    desc: "SQLAlchemy writes into a normalized schema — SQLite for prototypes, PostgreSQL for real.",
+    desc: "SQLAlchemy writes into a normalized schema: SQLite for prototypes, PostgreSQL for real.",
   },
   {
     key: "insight",
@@ -42,7 +44,7 @@ const STAGES: Stage[] = [
 ];
 
 /**
- * Interactive data pipeline — the site's signature element.
+ * Interactive data pipeline, the signature element of the site.
  * Auto-advances through stages; hovering/tapping a node takes over.
  */
 export default function Pipeline() {
@@ -70,7 +72,7 @@ export default function Pipeline() {
       role="group"
       aria-label="Interactive data pipeline: source to insight"
     >
-      {/* nodes — horizontal on sm+, vertical on mobile */}
+      {/* nodes: horizontal on sm+, vertical on mobile */}
       <div className="flex flex-col items-stretch gap-0 sm:flex-row sm:items-center">
         {STAGES.map((s, i) => (
           <div key={s.key} className="flex flex-1 flex-col items-stretch sm:flex-row sm:items-center">

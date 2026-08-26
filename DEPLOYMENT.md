@@ -1,16 +1,19 @@
 # Deploying taweshaldev.com.np to Cloudflare
 
-This portfolio is a **fully static site** (React + Vite). No server, no database, no environment variables. It deploys to **Cloudflare Pages** for free.
+This portfolio is **Next.js 15 with static export** (`output: "export"`). `next build` writes plain HTML/CSS/JS to the `out/` folder, so there is no Node server, no database and no environment variables. It deploys to **Cloudflare Pages** for free.
 
-**Key settings (you'll need these in step 6):**
+**Settings you need in the Cloudflare dashboard:**
 
 | Setting | Value |
 |---|---|
-| Framework preset | Vite (or None) |
+| Framework preset | **Next.js (Static HTML Export)** |
 | Build command | `npm run build` |
-| Build output directory | `dist` |
+| Build output directory | **`out`** |
 | Node version | 20 or newer |
 | Environment variables | **None required** |
+
+> ### Already have a failed deployment?
+> If your build failed with **`Couldn't find any 'pages' or 'app' directory'`**, the project was building before this Next.js setup existed. Go to your Pages project → **Settings** → **Build configuration** → **Edit**, set the build command to `npm run build` and the output directory to **`out`** (not `dist`), save, then **Deployments** → **Retry deployment**.
 
 ---
 
@@ -26,7 +29,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173
+Open http://localhost:3000
 
 ## 3. Build for production
 
@@ -34,7 +37,7 @@ Open http://localhost:5173
 npm run build
 ```
 
-Output goes to the `dist/` folder.
+Output goes to the `out/` folder as static files.
 
 ## 4. Test the production build
 
@@ -42,7 +45,7 @@ Output goes to the `dist/` folder.
 npm run preview
 ```
 
-Open http://localhost:4173 and click through every section, the resume download, and the social links.
+Open http://localhost:4173 and click through every section, the resume download, and the social links. This serves `out/` as a plain static host, exactly what Cloudflare does.
 
 ## 5. Push to GitHub
 
@@ -55,9 +58,9 @@ git remote add origin https://github.com/taweshaldev99/portfolio.git
 git push -u origin main
 ```
 
-(Create the empty `portfolio` repository on GitHub first — no README, no .gitignore.)
+(Create the empty `portfolio` repository on GitHub first, with no README and no .gitignore.)
 
-> The two original CV PDFs in the project root are committed too. That's fine — only `public/` and the build output are served. If you prefer to keep them private, add their filenames to `.gitignore` before the first commit.
+> The two original CV PDFs in the project root are committed too. That's fine, because only `public/` and the build output are served. If you prefer to keep them private, add their filenames to `.gitignore` before the first commit.
 
 ## 6. Deploy to Cloudflare Pages
 
@@ -65,19 +68,20 @@ git push -u origin main
 2. In the left sidebar: **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
 3. Authorize GitHub and select the `portfolio` repository.
 4. Configure the build:
-   - **Framework preset:** Vite
+   - **Framework preset:** Next.js (Static HTML Export)
    - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
+   - **Build output directory:** `out`
 5. Click **Save and Deploy**.
 
-After ~1 minute you'll get a URL like `portfolio-xyz.pages.dev`. Open it and verify everything works.
+After a minute or two you'll get a URL like `portfolio-xyz.pages.dev`. Open it and verify everything works.
 
 Every future `git push` to `main` redeploys automatically.
 
 **Alternative (no GitHub):** deploy straight from your machine:
 
 ```bash
-npx wrangler pages deploy dist --project-name=portfolio
+npm run build
+npx wrangler pages deploy out --project-name=portfolio
 ```
 
 ## 7. Put your domain on Cloudflare (nameservers)
@@ -89,7 +93,7 @@ Your `.com.np` domain is managed at **register.com.np** (Mercantile). Cloudflare
 3. Log in to https://register.com.np, open your domain, and **replace the existing nameservers** with the two Cloudflare ones.
 4. Wait for propagation. `.com.np` nameserver changes are applied by the registry and can take from a few hours up to a day or two. Cloudflare emails you when the site becomes **Active**.
 
-> Yes — use Cloudflare nameservers. It's the simplest path and gives you free SSL, CDN and redirects. You are not buying any hosting.
+> Yes, use Cloudflare nameservers. It's the simplest path and gives you free SSL, CDN and redirects. You are not buying any hosting.
 
 ## 8. Connect the domain to the Pages project
 
@@ -100,7 +104,7 @@ Once the site shows **Active** in Cloudflare:
    Cloudflare creates the DNS record for you automatically.
 3. Repeat for `www.taweshaldev.com.np` (recommended, see step 9).
 
-The resulting DNS records (created automatically — you don't type these by hand):
+The resulting DNS records (created automatically, so you don't type these by hand):
 
 | Type | Name | Target | Proxy |
 |---|---|---|---|
@@ -111,7 +115,7 @@ The resulting DNS records (created automatically — you don't type these by han
 
 The canonical URL is **https://taweshaldev.com.np** (that's what the site's metadata, sitemap and canonical tag use). Redirect `www` to it so search engines see one site:
 
-1. Add `www.taweshaldev.com.np` as a custom domain on the Pages project (step 8) — this gives `www` a certificate.
+1. Add `www.taweshaldev.com.np` as a custom domain on the Pages project (step 8). This gives `www` a certificate.
 2. In the Cloudflare dashboard for the domain: **Rules** → **Redirect Rules** → **Create rule**:
    - **When incoming requests match:** Custom filter → Field `Hostname` equals `www.taweshaldev.com.np`
    - **Then:** Dynamic redirect → expression: `concat("https://taweshaldev.com.np", http.request.uri.path)`
@@ -133,14 +137,23 @@ Recommended settings under **SSL/TLS**:
 - [ ] `http://taweshaldev.com.np` upgrades to HTTPS
 - [ ] Resume downloads: `https://taweshaldev.com.np/Taweshal_Dev_Thakur_CV.pdf`
 - [ ] `https://taweshaldev.com.np/robots.txt` and `/sitemap.xml` load
-- [ ] Share the URL in WhatsApp/LinkedIn — the preview card shows your name + OG image
+- [ ] Share the URL in WhatsApp/LinkedIn and check the preview card shows your name and OG image
 - [ ] Run a Lighthouse audit in Chrome DevTools (aim: 90+ across the board)
 
 ### Afterwards (optional but worth doing)
 
 - Submit `https://taweshaldev.com.np/sitemap.xml` in [Google Search Console](https://search.google.com/search-console) to get indexed faster.
-- Analytics: if you want visitor numbers, enable **Cloudflare Web Analytics** (privacy-friendly, free, no cookies) — dashboard → Analytics → Web Analytics → add the site. The site works fine without it.
+- Analytics: if you want visitor numbers, enable **Cloudflare Web Analytics** (privacy-friendly, free, no cookies) via dashboard → Analytics → Web Analytics → add the site. The site works fine without it.
 
 ### Updating content later
 
-All text — name, links, jobs, skills, projects — lives in **`src/data/profile.ts`**. Edit that file, commit, push. Cloudflare redeploys automatically. To swap the resume, replace `public/Taweshal_Dev_Thakur_CV.pdf` (keep the same filename).
+All text (name, links, jobs, skills, projects) lives in **`src/data/profile.ts`**. Edit that file, commit, push. Cloudflare redeploys automatically. To swap the resume, replace `public/Taweshal_Dev_Thakur_CV.pdf` (keep the same filename).
+
+### Troubleshooting
+
+| Error in the Cloudflare build log | Cause and fix |
+|---|---|
+| `Couldn't find any 'pages' or 'app' directory` | Build ran from a commit without `src/app/`. Push the latest code, or fix the output directory to `out` and retry. |
+| `next export has been removed` | Remove any `next export` from the build command. `output: "export"` in `next.config.mjs` already does it, so the build command must be exactly `npm run build`. |
+| Deploy succeeds but the site is blank / 404 | Output directory is wrong. It must be **`out`**, not `dist` or `.next`. |
+| Fonts look wrong | `next/font` downloads Space Grotesk, Inter and JetBrains Mono at build time and self-hosts them. If the build machine had no network, retry the deployment. |

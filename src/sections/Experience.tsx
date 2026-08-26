@@ -8,7 +8,7 @@ export default function Experience() {
       id="experience"
       kicker="03 · experience"
       title="Where I've shipped"
-      intro="QA and project coordination at a product company — the software lifecycle, learned from inside a real release cadence."
+      intro="QA and project coordination at a product company. The software lifecycle, learned from inside a real release cadence."
     >
       <div className="space-y-6">
         {experience.map((job, i) => (

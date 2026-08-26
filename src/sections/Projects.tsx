@@ -12,7 +12,7 @@ export default function Projects() {
       id="projects"
       kicker="06 · work"
       title="Projects that carry weight"
-      intro="Selected for direction, not volume — data pipelines first, product work second, roots last."
+      intro="Selected for direction, not volume: data pipelines first, product work second, roots last."
     >
       {/* featured project */}
       <Reveal>

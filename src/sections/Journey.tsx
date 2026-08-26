@@ -26,7 +26,7 @@ export default function Journey() {
       id="journey"
       kicker="02 · the road"
       title="My journey into Data Engineering"
-      intro="Not a wish — a build order. Each layer only counts once the one below it holds weight."
+      intro="Not a wish list, a build order. Each layer only counts once the one below it holds weight."
     >
       <div className="relative ml-3 border-l border-line pl-8 sm:ml-6 sm:pl-10">
         {journey.map((step, i) => {
@@ -54,7 +54,7 @@ export default function Journey() {
 
       <Reveal delay={0.2}>
         <p className="mt-10 max-w-2xl border-l-2 border-accent/50 pl-5 text-[0.95rem] italic leading-relaxed text-mute">
-          I'm not just saying I want to be a data engineer — every repo, course and pipeline above is a
+          I'm not just saying I want to be a data engineer. Every repo, course and pipeline above is a
           deliberate step toward it.
         </p>
       </Reveal>
