@@ -13,7 +13,12 @@ This portfolio is **Next.js 15 with static export** (`output: "export"`). `next 
 | Environment variables | **None required** |
 
 > ### Already have a failed deployment?
-> If your build failed with **`Couldn't find any 'pages' or 'app' directory'`**, the project was building before this Next.js setup existed. Go to your Pages project → **Settings** → **Build configuration** → **Edit**, set the build command to `npm run build` and the output directory to **`out`** (not `dist`), save, then **Deployments** → **Retry deployment**.
+> If your build failed with **`Couldn't find any 'pages' or 'app' directory'`**, Cloudflare is building an old commit from before this Next.js setup existed. Fix it in two steps:
+>
+> 1. **Settings** → **Build configuration** → **Edit**: build command `npm run build`, build output directory **`out`** (not `dist`). Save.
+> 2. **Deployments** → **Create deployment** → branch `main`.
+>
+> **Do not use "Retry deployment".** Retry replays the exact commit that failed, so it rebuilds the old code and fails again no matter what you pushed. Only "Create deployment" (or a fresh `git push`) picks up the latest commit.
 
 ---
 
@@ -153,7 +158,8 @@ All text (name, links, jobs, skills, projects) lives in **`src/data/profile.ts`*
 
 | Error in the Cloudflare build log | Cause and fix |
 |---|---|
-| `Couldn't find any 'pages' or 'app' directory` | Build ran from a commit without `src/app/`. Push the latest code, or fix the output directory to `out` and retry. |
+| `Couldn't find any 'pages' or 'app' directory` | Cloudflare built an old commit without `src/app/`. Use **Deployments** → **Create deployment** on `main`, not **Retry deployment**, which replays the old commit. |
 | `next export has been removed` | Remove any `next export` from the build command. `output: "export"` in `next.config.mjs` already does it, so the build command must be exactly `npm run build`. |
+| `next@16.x ... not found and will be installed` | The build command is `npx next build`, which downloads whatever Next is newest instead of the version pinned in `package.json`. Change the build command to `npm run build`. |
 | Deploy succeeds but the site is blank / 404 | Output directory is wrong. It must be **`out`**, not `dist` or `.next`. |
 | Fonts look wrong | `next/font` downloads Space Grotesk, Inter and JetBrains Mono at build time and self-hosts them. If the build machine had no network, retry the deployment. |
